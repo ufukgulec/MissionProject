@@ -7,6 +7,12 @@ namespace MissionProject
     {
         static void Main(string[] args)
         {
+
+            Applicant applicant = GetInformation();
+            
+        }
+        public static Applicant GetInformation()
+        {
             Applicant applicant = new Applicant();
             int Age;
             long IdNumber;
@@ -85,7 +91,6 @@ namespace MissionProject
                 }
             }
 
-
             Console.WriteLine("Kullandığınız Teknolojileri Seçiniz: y / n");
 
             foreach (var item in techs)
@@ -116,6 +121,9 @@ namespace MissionProject
                     }
                 }
             }
+
+            return applicant;
         }
+
     }
 }

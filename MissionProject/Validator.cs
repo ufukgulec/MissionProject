@@ -20,21 +20,10 @@ namespace MissionProject
             }
         }
 
-        public static bool IdNumberControl(string idNumber)
+        public static bool IdNumberControl(long idNumber)
         {
-            if (idNumber.Length == 11)
+            if (idNumber > 10000000000)
             {
-                foreach (var item in idNumber)
-                {
-                    if (!char.IsDigit(item))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        //İşlem burda
-                    }
-                }
                 return true;
             }
             else
@@ -42,6 +31,23 @@ namespace MissionProject
                 return false;
             }
 
+        }
+
+        public static bool ExpControl(int exp, int age)
+        {
+            if (age > exp)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        internal static bool ChooseControl(char choose)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MissionProject
 {
@@ -6,46 +7,115 @@ namespace MissionProject
     {
         static void Main(string[] args)
         {
+            Applicant applicant = new Applicant();
             int Age;
-            string IdNumber;
+            long IdNumber;
+            int Exp;
+
+            string[] techs = { "C#", "HTML", "JS", "MSSQL", "ALGORITHM", "DATA STRUCTURE" };
 
             while (true)
             {
-                Console.Write("Yaşınız:");
-                Age = Convert.ToInt16(Console.ReadLine());
+                try
+                {
+                    Console.Write("Yaşınız:");
+                    Age = Convert.ToInt16(Console.ReadLine());
 
-                if (Validator.AgeControl(Age))
-                {
-                    break;
+                    if (Validator.AgeControl(Age))
+                    {
+                        applicant.Age = Age;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Yaşınızı düzeltiniz!");
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    Console.WriteLine("Yaşınızı düzeltiniz!");
+
+                    Console.WriteLine("Geçerli değer giriniz!");
+                }
+
+            }
+
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Tc Kimlik Numaranız:");
+                    IdNumber = Convert.ToInt64(Console.ReadLine());
+
+                    if (Validator.IdNumberControl(IdNumber))
+                    {
+                        applicant.IdentificationNumber = IdNumber;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tc kimlik numaranızı düzeltiniz!");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Geçerli değer giriniz!");
                 }
             }
 
             while (true)
             {
-                Console.Write("Tc Kimlik Numaranız:");
-                IdNumber = Console.ReadLine();
+                try
+                {
+                    Console.Write("Deneyim Yılınız:");
+                    Exp = Convert.ToInt32(Console.ReadLine());
 
-                if (Validator.IdNumberControl(IdNumber))
-                {
-                    break;
+                    if (Validator.ExpControl(Exp, applicant.Age))
+                    {
+                        applicant.YearsOfExperience = Exp;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Deneyim yılınızı düzeltiniz!");
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    Console.WriteLine("Tc kimlik numaranızı düzeltiniz!");
+                    Console.WriteLine("Geçerli değer giriniz!");
                 }
             }
 
 
-            Console.Write("Deneyim Yılınız:");
-            int Exp = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Kullandığınız Teknolojileri Seçiniz: y / n");
 
-            Console.WriteLine("Kullandığınız Teknolojileri Seçiniz: (Virgül ile ayırınız.)");
-            Console.WriteLine("1.C# , 2.HTML , 3.JS , 4.MSSQL , 5.ALGORITHM , 6.DATA STRUCTURE");
-
+            foreach (var item in techs)
+            {
+                while (true)
+                {
+                    try
+                    {
+                        Console.Write(string.Format("{0} kullanabilirim :", item));
+                        char choose = Convert.ToChar(Console.ReadLine().ToLower());
+                        if (choose.Equals('y'))
+                        {
+                            applicant.AvailableTech.Add(item);
+                            break;
+                        }
+                        else if (choose.Equals('n'))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("y yada n kullanınız!");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("y yada n kullanınız!"); //birden fazla karakter girişi
+                    }
+                }
+            }
         }
     }
 }

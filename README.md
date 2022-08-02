@@ -7,7 +7,7 @@ Bu proje Feysoft'un .Net ile oluşturulmuş değerlendirme projesidir.
 ## Proje Tanımı
 
 Bir işe alım sürecinin belirli kurallar çerçevesinde similasyon edilmesi beklenmektedir. 
-İşe başvuracak kişinin bilgileri doldurulur (Statik veya Console’dan girilebilir). Bilgiler kontrol edilir ve bilgiler dahilinde ilgili sonuç döndürülür. 
+İşe başvuracak kişinin bilgileri doldurulur (Statik veya Console’dan girilebilir). Bilgiler kontrol edilir ve bilgiler dahilinde ilgili sonuç döndürülür. 
 
 İşe Başvuracak Kişinin Bilgileri :
 

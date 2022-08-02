@@ -5,20 +5,12 @@ namespace MissionProject
 {
     internal class Program
     {
+        static Applicant applicant = new Applicant();
         static void Main(string[] args)
         {
-
-            Applicant applicant = GetInformation();
-            
-        }
-        public static Applicant GetInformation()
-        {
-            Applicant applicant = new Applicant();
             int Age;
             long IdNumber;
-            int Exp;
-
-            string[] techs = { "C#", "HTML", "JS", "MSSQL", "ALGORITHM", "DATA STRUCTURE" };
+            double Exp;
 
             while (true)
             {
@@ -73,7 +65,7 @@ namespace MissionProject
                 try
                 {
                     Console.Write("Deneyim Yılınız:");
-                    Exp = Convert.ToInt32(Console.ReadLine());
+                    Exp = Double.Parse(Console.ReadLine());
 
                     if (Validator.ExpControl(Exp, applicant.Age))
                     {
@@ -93,7 +85,7 @@ namespace MissionProject
 
             Console.WriteLine("Kullandığınız Teknolojileri Seçiniz: y / n");
 
-            foreach (var item in techs)
+            foreach (var item in ApplicantValidator.techs)
             {
                 while (true)
                 {
@@ -122,7 +114,39 @@ namespace MissionProject
                 }
             }
 
-            return applicant;
+            if (ApplicantValidator.IdNumberControl(applicant.IdentificationNumber) && applicant.YearsOfExperience > 1 && ApplicantValidator.TechControl(applicant.AvailableTech.Count) > 25)
+            {
+                if (applicant.Age > 18)
+                {
+                    if (ApplicantValidator.TechControl(applicant.AvailableTech.Count) <= 50)
+                    {
+                        if (applicant.YearsOfExperience < 2)
+                        {
+                            Console.WriteLine("TransferredToLead");
+                        }
+                    }
+                    else if (ApplicantValidator.TechControl(applicant.AvailableTech.Count) > 75)
+                    {
+                        Console.WriteLine("AutoAccepted");
+                    }
+                    else
+                    {
+                        if (applicant.YearsOfExperience > 2)
+                        {
+                            Console.WriteLine("TransferredToCTO");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("TransferredToHR");
+                }
+            }
+            else
+            {
+                Console.WriteLine("AutoRejected");
+            }
+
         }
 
     }

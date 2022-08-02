@@ -33,7 +33,7 @@ namespace MissionProject
 
         }
 
-        public static bool ExpControl(int exp, int age)
+        public static bool ExpControl(double exp, int age)
         {
             if (age > exp)
             {

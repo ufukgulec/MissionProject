@@ -10,7 +10,7 @@ namespace MissionProject
     {
         public int Age { get; set; }
         public long IdentificationNumber { get; set; }
-        public int YearsOfExperience { get; set; }
+        public double YearsOfExperience { get; set; }
 
         public List<string> AvailableTech = new List<string>();
     }

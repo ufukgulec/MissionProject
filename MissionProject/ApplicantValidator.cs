@@ -33,9 +33,9 @@ namespace MissionProject
             }
         }
 
-        public static double TechControl(double availableTechCount)
+        public static double TechControl(double availableTechCount, double TechsCount = 6)
         {
-            double tky = 100 / (6.0 / availableTechCount);
+            double tky = 100 / (TechsCount / availableTechCount);
             return tky;
         }
     }

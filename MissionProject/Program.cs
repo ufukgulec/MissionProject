@@ -114,7 +114,7 @@ namespace MissionProject
                 }
             }
 
-            if (ApplicantValidator.IdNumberControl(applicant.IdentificationNumber) && applicant.YearsOfExperience > 1 && ApplicantValidator.TechControl(applicant.AvailableTech.Count) > 25)
+            if (ApplicantValidator.IdNumberControl(applicant.IdentificationNumber) && applicant.YearsOfExperience > 1 && ApplicantValidator.TechControl(applicant.AvailableTech.Count, ApplicantValidator.techs.Length) > 25)
             {
                 if (applicant.Age > 18)
                 {

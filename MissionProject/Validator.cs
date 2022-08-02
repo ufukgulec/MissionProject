@@ -22,7 +22,7 @@ namespace MissionProject
 
         public static bool IdNumberControl(long idNumber)
         {
-            if (idNumber > 10000000000)
+            if (idNumber > 10000000000 && idNumber < 99999999999)
             {
                 return true;
             }
@@ -43,11 +43,6 @@ namespace MissionProject
             {
                 return false;
             }
-        }
-
-        internal static bool ChooseControl(char choose)
-        {
-            throw new NotImplementedException();
         }
     }
 }
